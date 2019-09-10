@@ -7,6 +7,15 @@ const port = 3000;
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+var users =  [
+			{ name: 'Teo', age: 18 },
+			{ name: 'Ty', age: 19 },
+			{ name: 'Tet', age: 20 },
+			{ name: 'Tyn', age: 20 },
+		];
+
+
+
 app.get('', function (request, response) {
 	response.render('index', {
 		name: 'Hai'
@@ -14,11 +23,21 @@ app.get('', function (request, response) {
 });
 
 app.get('/users', function(request, response) {
-	response.render('uesrs/index', {
-		users: [
-			{ name: 'Teo', age: 18 },
-			{ name: 'Ty', age: 19 }
-		]
+	response.render('users/index', {
+		users: users,
+		query: request.query.q
+	});
+});
+
+app.get('/users/search', function(request, response) {
+	var q = request.query.q;
+	var matchUsers = users.filter(function(user) {
+		return user.name.toLowerCase().includes(q.toLowerCase());
+	});
+	// console.log(matchUsers);
+	response.render('users/index', {
+		users: matchUsers,
+		query: request.query.q
 	});
 });
 
