@@ -1,0 +1,9 @@
+h1 Add new user
+
+form(action="/users/create", method="POST")
+	label(for="name") Name
+	input#name(type="text" name="name")
+	//- br
+	label(for="age") Age
+	input#age(type="text" name="age")
+	button(type="submit") Add
