@@ -1,21 +1,19 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+const shortid = require('shortid');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+db.defaults({users: []}).write();
+
 app.set('views', './views');
 app.set('view engine', 'pug');
-
-var users =  [
-			{ name: 'Teo', age: 18 },
-			{ name: 'Ty', age: 19 },
-			{ name: 'Tet', age: 20 },
-			{ name: 'Tyn', age: 20 },
-		];
-
-
 
 app.get('', function (request, response) {
 	response.render('index', {
@@ -25,14 +23,14 @@ app.get('', function (request, response) {
 
 app.get('/users', function(request, response) {
 	response.render('users/index', {
-		users: users,
+		users: db.get('users').value(),
 		query: request.query.q
 	});
 });
 
 app.get('/users/search', function(request, response) {
 	var q = request.query.q;
-	var matchUsers = users.filter(function(user) {
+	var matchUsers = db.get('users').value().filter(function(user) {
 		// return user.name.localeCompare(q, 'en', { sensitivity: 'base' });
 		return user.name.toLowerCase().includes(q.toLowerCase());
 	});
@@ -48,9 +46,18 @@ app.get('/users/create', function(request, response) {
 });
 
 app.post('/users/create', function(request, response) {
-	users.push(request.body);
+	// users.push(request.body);
+	request.body.id = shortid.generate();
+	db.get('users').push(request.body).write();
 	// console.log(typeof request.body.age);
 	response.redirect('/users');
+});
+
+app.get('/users/:id', function(request, response) {
+	var id = request.params.id;
+	response.render('users/view', {
+		user: db.get('users').find({ id: id }).value()
+	});
 });
 
 app.listen(port, () => console.log('Server is turned on'));
