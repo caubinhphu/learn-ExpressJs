@@ -15,7 +15,8 @@ app.set('view engine', 'pug');
 
 app.get('', function (request, response) {
 	response.render('index', {
-		name: 'Hai'
+		name: 'Hai',
+		active: 'home'
 	});
 });
 

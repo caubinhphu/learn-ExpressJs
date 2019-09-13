@@ -2,7 +2,24 @@ html
 	head
 		link(rel="stylesheet", href="/styles/bootstrap.min.css")
 		link(rel="stylesheet", href="/styles/mystyle.css")
+		script(src="/script/jquery.js")
+		script(src="/script/popper.min.js")
+		script(src='/script/bootstrap.min.js')
+
 	body
-		block header
-		block content
-		block footer
+		nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+			a.navbar-brand(href='/') HTD
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent')
+				span.navbar-toggler-icon
+			#navbarSupportedContent.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto.text-right
+					li.nav-item
+						a.nav-link(href='/') Home
+					li.nav-item
+						a.nav-link(href='/users') Users
+
+		div(style="min-height: 70vh")
+			block content
+		
+		.text-center.bg-secondary.py-5
+			h2.text-light HTD
