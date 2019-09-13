@@ -20,5 +20,6 @@ app.get('', function (request, response) {
 });
 
 app.use('/users', userRoute);
+app.use(express.static('public'));
 
 app.listen(port, () => console.log('Server is turned on'));

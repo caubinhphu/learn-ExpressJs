@@ -1,12 +1,15 @@
-h2 Users list
+extends ../template-layout/common
 
-a(href="/users/create") Add new user
+block content
+	h2 Users list
 
-form(action="/users/search", method="GET")
-	input(type="text" name="q" value=`${query}` === 'undefined' ? '': `${query}`)
-	button Search
-ul
-	each user in users
-		li
-			span= user.name + ' ' + user.age + ' '
-			a(href='/users/' + user.id) View
+	a(href="/users/create") Add new user
+
+	form(action="/users/search", method="GET")
+		input(type="text" name="q" value=`${query}` === 'undefined' ? '': `${query}`)
+		button Search
+	ul
+		each user in users
+			li
+				span= user.name + ' ' + user.age + ' '
+				a(href='/users/' + user.id) View
