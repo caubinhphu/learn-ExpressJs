@@ -1,3 +1,5 @@
+const md5 = require('md5');
+
 var db = require('../db');
 
 
@@ -8,10 +10,11 @@ module.exports = {
 	postLogin: function(request, response, next) {
 		var email = request.body.email;
 		var password = request.body.password;
+		var passwordEncode = md5(password);
 
 		var user = db.get('users').find( { email: email } ).value();
 
-		if (!user || password !== user.password) {
+		if (!user || passwordEncode !== user.password) {
 			response.render('login/index', {
 				errs: [ 'Email hoặc mật khẩu không đúng' ],
 				value: request.body
@@ -19,7 +22,7 @@ module.exports = {
 			return;
 		}
 
-		response.cookie('userId', user.id);
+		response.cookie('userId', user.id, { signed: true });
 		response.redirect('/users');
 	}
 }

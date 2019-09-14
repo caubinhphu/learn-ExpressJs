@@ -17,6 +17,14 @@ html
 						a.nav-link(href='/') Home
 					li.nav-item
 						a.nav-link(href='/users') Users
+			
+			if user
+				p.text-light.my-auto= user.name
+			else 
+				a.btn.btn-outline-primary(href="/login") Log in
+
+			a.btn.btn-outline-secondary.ml-2(href="#") Log out
+
 
 		div(style="min-height: 70vh")
 			block content
