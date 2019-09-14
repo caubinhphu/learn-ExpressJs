@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const controller = require('../controllers/users.controller');
-const validate = require('../validate/user-validate.js');
+const validate = require('../validate/user.validate');
 
 router.get('/', controller.index);
 

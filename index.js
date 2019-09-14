@@ -1,13 +1,17 @@
 const express = require('express');
-const userRoute = require('./route/users.route');
+const cookieParser = require('cookie-parser');
 
+const userRoute = require('./route/users.route');
+const loginRoute = require('./route/login.route');
+
+const middlewareLogin = require('./middleware/login.middleware');
 
 const port = 3000;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 
 
 app.set('views', './views');
@@ -20,7 +24,7 @@ app.get('', function (request, response) {
 	});
 });
 
-app.use('/users', userRoute);
+app.use('/login', loginRoute); 
+app.use('/users', middlewareLogin.postLogin, userRoute);
 app.use(express.static('public'));
-
 app.listen(port, () => console.log('Server is turned on'));

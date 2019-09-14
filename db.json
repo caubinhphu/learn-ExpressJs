@@ -8,7 +8,9 @@
     {
       "name": "caubinhphu",
       "age": "15",
-      "id": "SE2srgG"
+      "id": "SE2srgG",
+      "email": "abc@gmail.com",
+      "password": "1234"
     },
     {
       "name": "hai",
@@ -24,11 +26,6 @@
       "name": "ti",
       "age": "14",
       "id": "gr6V3JN"
-    },
-    {
-      "name": "nguyễn anh hải",
-      "age": "20",
-      "id": "KHLlCiw"
     }
   ]
 }
