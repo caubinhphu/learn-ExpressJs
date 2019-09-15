@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
@@ -11,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser('asdhgf2q31235asdf'));
+app.use(cookieParser(process.env.SECRECT));
 
 
 app.set('views', './views');
@@ -30,4 +32,5 @@ app.use(express.static('public'));
 
 app.listen(port, () => console.log('Server is turned on'));
 
-// console.log(proc)
+console.log(process.env.SESSION_SERECT);
+console.log(process.env.SECRECT);
