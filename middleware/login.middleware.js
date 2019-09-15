@@ -2,7 +2,6 @@ const db = require('../db');
 
 module.exports = {
 	postLogin: function(request, response, next) {
-		console.log(request.signedCookies);
 		if (!request.signedCookies) {
 			response.redirect('/login');
 			return;
@@ -13,7 +12,8 @@ module.exports = {
 			return;
 		}
 
-		response.locals.user = user;
+		// response.locals.user = user;
+		request.app.locals.user = user;
 		next();
 	}
 };

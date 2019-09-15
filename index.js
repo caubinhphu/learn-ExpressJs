@@ -27,4 +27,7 @@ app.get('', function (request, response) {
 app.use('/login', loginRoute); 
 app.use('/users', middlewareLogin.postLogin, userRoute);
 app.use(express.static('public'));
+
 app.listen(port, () => console.log('Server is turned on'));
+
+// console.log(proc)

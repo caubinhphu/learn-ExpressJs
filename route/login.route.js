@@ -7,5 +7,6 @@ const validate = require('../validate/login.validate');
 router.get('', controller.login);
 
 router.post('', validate.postLogin, controller.postLogin);
+router.get('/logout', controller.logout);
 
 module.exports = router;

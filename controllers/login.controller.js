@@ -24,5 +24,10 @@ module.exports = {
 
 		response.cookie('userId', user.id, { signed: true });
 		response.redirect('/users');
+	},
+	logout: function(request, response) {
+		response.clearCookie('userId', { signed: true });
+		request.app.locals.user = undefined;
+		response.redirect('/login');
 	}
 }
