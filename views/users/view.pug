@@ -3,6 +3,9 @@ extends ../template-layout/common
 block content
 	.container.my-4
 		h1.text-center View user
-		
-		p= `Name: ${user.name}`
-		p= `Age: ${user.age}`
+		.row.text-center.text-sm-left
+			.col-sm-5
+				img.rounded-circle(src=user.avatar, width="200", height="200")
+			.col-sm-7.d-flex.flex-column.justify-content-center
+				p= `Name: ${user.name}`
+				p= `Age: ${user.age}`
