@@ -13,10 +13,12 @@ html
 				span.navbar-toggler-icon
 			#navbarSupportedContent.collapse.navbar-collapse
 				ul.navbar-nav.mr-auto.text-right
-					li.nav-item
+					li.nav-item(class=active==='home'?'active':'')
 						a.nav-link(href='/') Home
-					li.nav-item
+					li.nav-item(class=active==='users'?'active':'')
 						a.nav-link(href='/users') Users
+					li.nav-item(class=active==='products'?'active':'')
+						a.nav-link(href='/products') Products
 				div.d-flex.justify-content-center.justify-content-sm-end
 					if user
 						p.text-light.my-auto= user.name

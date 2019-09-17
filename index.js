@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const userRoute = require('./route/users.route');
 const loginRoute = require('./route/login.route');
+const productRoute = require('./route/products.route');
 
 const middlewareLogin = require('./middleware/login.middleware');
 
@@ -28,9 +29,7 @@ app.get('', function (request, response) {
 
 app.use('/login', loginRoute); 
 app.use('/users', middlewareLogin.postLogin, userRoute);
+app.use('/products', productRoute);
 app.use(express.static('public'));
 
 app.listen(port, () => console.log('Server is turned on'));
-
-console.log(process.env.SESSION_SERECT);
-console.log(process.env.SECRECT);
