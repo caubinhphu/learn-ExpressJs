@@ -15,11 +15,14 @@ block content
 		
 		table.table
 			tr
+				th Avatar
 				th Name
 				th Age
 				th View
 			each user in users
 				tr
+					td
+						img.rounded-circle(src=user.avatar, width="35", height="35")
 					td= user.name
 					td= user.age + ' '
 					td

@@ -26,6 +26,9 @@ module.exports = {
 	},
 	postCreate: function(request, response) {
 		request.body.id = shortid.generate();
+		if (!request.file)
+			request.body.avatar = '/image/avatar.png';
+		else request.body.avatar = '/uploads/' + request.file.filename;
 		db.get('users').push(request.body).write();
 		response.redirect('/users');
 	},
