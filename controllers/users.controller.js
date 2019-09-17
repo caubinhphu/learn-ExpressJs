@@ -35,7 +35,7 @@ module.exports = {
 	get: function(request, response) {
 		var id = request.params.id;
 		response.render('users/view', {
-			user: db.get('users').find({ id: id }).value(),
+			userView: db.get('users').find({ id: id }).value(),
 			active: 'users'
 		});
 	}
