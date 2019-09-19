@@ -1,0 +1,26 @@
+extends ../template-layout/common
+
+block content
+	.container
+		h1.my-4.text-center Edit your profile
+		
+		if errs
+			each err in errs
+				.alert.alert-danger= err
+
+		form(method="POST", action="/users/edit/" + userEdit.id, enctype="multipart/form-data")
+			.form-group.row
+				label.col-sm-2(for="name") Name
+				input#name.form-control.col-sm-10(type="text" name="name", value=values?values.name:userEdit.name)
+			.form-group.row
+				label.col-sm-2(for="age") Age
+				input#age.form-control.col-sm-10(type="text" name="age", value=values?values.age:userEdit.age)
+			.form-group.d-flex.flex-column.flex-sm-row
+				div
+					label Avatar
+					img.m-4(src=userEdit.avatar, width="200px")
+				div.d-flex.flex-column.justify-content-center
+					label(for="avatar") Đổi avatar
+					input#avatar.form-control-file(type="file", name="avatar")
+			div.text-right
+				button.btn.btn-success(type="submit") Save

@@ -38,5 +38,22 @@ module.exports = {
 			userView: db.get('users').find({ id: id }).value(),
 			active: 'users'
 		});
+	},
+	edit: function(request, response) {
+		var id = request.params.id;
+		response.render('users/edit', {
+			// userEdit: db.get('users').find({ id: id }).value();
+			userEdit: request.app.locals.userLogin
+		});
+	},
+	postEdit: function(request, response) {
+		var id = request.params.id;
+		var user = db.get('users').find( { id: id }).value();
+		user.name = request.body.name;
+		user.age = request.body.age;
+		if (request.file)
+			user.avatar = '/uploads/' + request.file.filename;
+		db.get('users').write();
+		response.redirect('/users/' + id);
 	}
 }

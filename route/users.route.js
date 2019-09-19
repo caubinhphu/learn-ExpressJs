@@ -21,4 +21,12 @@ router.post('/create',
 
 router.get('/:id', controller.get);
 
+router.get('/edit/:id', controller.edit);
+
+router.post('/edit/:id',
+	upload.single('avatar'),
+	validate.postEdit,
+	controller.postEdit
+);
+
 module.exports = router;

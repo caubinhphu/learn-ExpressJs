@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "name": "caubinhphu",
-      "age": "15",
+      "name": "caubinhphu2",
+      "age": "21",
       "id": "SE2srgG",
       "email": "abc@gmail.com",
       "password": "81dc9bdb52d04dc20036dbd8313ed055",
-      "avatar": "/image/avatar.png"
+      "avatar": "/uploads/cc96d2962743145aa615cf7be2162e25"
     },
     {
       "name": "nguyễn anh hải",
@@ -19,12 +19,6 @@
       "age": "12",
       "id": "PK5gXWr",
       "avatar": "/uploads/60f5e904a5e880d3d3c8da1e75af50f1"
-    },
-    {
-      "name": "hai",
-      "age": "21",
-      "id": "vuw-m4T",
-      "avatar": "/image/avatar.png"
     }
   ],
   "products": [

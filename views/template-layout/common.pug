@@ -20,9 +20,10 @@ html
 					li.nav-item(class=active==='products'?'active':'')
 						a.nav-link(href='/products') Products
 				div.d-flex.justify-content-center.justify-content-sm-end
-					if user
-						p.text-light.my-auto= user.name
-						img.rounded-circle.ml-2(src=user.avatar, width="32", height="32")
+					if userLogin
+						p.text-light.my-auto= userLogin.email
+						a(href="/users/" + userLogin.id, title="Your profile")
+							img.rounded-circle.ml-2(src=userLogin.avatar, width="32", height="32")
 					else 
 						a.btn.btn-outline-primary(href="/login") Log in
 

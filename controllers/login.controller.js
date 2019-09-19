@@ -27,7 +27,7 @@ module.exports = {
 	},
 	logout: function(request, response) {
 		response.clearCookie('userId', { signed: true });
-		request.app.locals.user = undefined;
+		request.app.locals.userLogin = undefined;
 		response.redirect('/login');
 	}
 }

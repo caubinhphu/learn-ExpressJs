@@ -13,7 +13,7 @@ module.exports = {
 		}
 
 		// response.locals.user = user;
-		request.app.locals.user = user;
+		request.app.locals.userLogin = user;
 		next();
 	}
 };

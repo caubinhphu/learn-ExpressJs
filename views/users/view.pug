@@ -4,8 +4,10 @@ block content
 	.container.my-4
 		h1.text-center View user
 		.row.text-center.text-sm-left
-			.col-sm-5
-				img.rounded-circle(src=userView.avatar, width="200", height="200")
+			.col-sm-5.d-flex.flex-column.align-items-center
+				img.rounded-circle.mb-4(src=userView.avatar, width="200", height="200")
+				if userView.id === userLogin.id
+					a.btn.btn-info(href='/users/edit/' + userView.id) Edit your profile
 			.col-sm-7.d-flex.flex-column.justify-content-center
 				p= `Name: ${userView.name}`
 				p= `Age: ${userView.age}`
