@@ -23,7 +23,8 @@ module.exports = {
 		}
 
 		response.cookie('userId', user.id, { signed: true });
-		response.redirect('/users');
+		// request.app.locals.userLogin = user;
+		response.redirect('/user/cart');
 	},
 	logout: function(request, response) {
 		response.clearCookie('userId', { signed: true });

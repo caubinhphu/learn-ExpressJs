@@ -1,4 +1,4 @@
-extends ../template-layout/common
+extends ../template-layout/common.user.pug
 
 block content
 	.container
@@ -8,17 +8,17 @@ block content
 			each err in errs
 				.alert.alert-danger= err
 
-		form(method="POST", action="/users/edit/" + userEdit.id, enctype="multipart/form-data")
+		form(method="POST", action="/user/edit/" + user.id, enctype="multipart/form-data")
 			.form-group.row
 				label.col-sm-2(for="name") Name
-				input#name.form-control.col-sm-10(type="text" name="name", value=values?values.name:userEdit.name)
+				input#name.form-control.col-sm-10(type="text" name="name", value=values?values.name:user.name)
 			.form-group.row
 				label.col-sm-2(for="age") Age
-				input#age.form-control.col-sm-10(type="text" name="age", value=values?values.age:userEdit.age)
+				input#age.form-control.col-sm-10(type="text" name="age", value=values?values.age:user.age)
 			.form-group.d-flex.flex-column.flex-sm-row
 				div
 					label Avatar
-					img.m-4(src=userEdit.avatar, width="200px")
+					img.m-4(src=user.avatar, width="200px")
 				div.d-flex.flex-column.justify-content-center
 					label(for="avatar") Đổi avatar
 					input#avatar.form-control-file(type="file", name="avatar")
