@@ -34,6 +34,24 @@
       "age": "20",
       "id": "_3goTYKZ",
       "avatar": "/uploads/262825af6d450b77dfaba6e254d13299"
+    },
+    {
+      "email": "abcdef@gmail.com",
+      "password": "81dc9bdb52d04dc20036dbd8313ed055",
+      "repassword": "1234",
+      "name": "nguyễn anh hải",
+      "age": "20",
+      "id": "SCsDn_vk",
+      "avatar": "/uploads/8cd6177d810f1c6d69b2d97217d4d8e8"
+    },
+    {
+      "email": "aaa@gmail.com",
+      "password": "81dc9bdb52d04dc20036dbd8313ed055",
+      "repassword": "1234",
+      "name": "caubinhphu8",
+      "age": "20",
+      "id": "-QzIPCcf",
+      "avatar": "/image/avatar.png"
     }
   ],
   "products": [

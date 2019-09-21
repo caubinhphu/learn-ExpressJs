@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const md5 = require('md5');
+const shortid = require('shortid');
 
 const db = require('../db');
 
@@ -39,5 +40,20 @@ module.exports = {
 		response.clearCookie('userId', { signed: true });
 		request.app.locals.userLogin = undefined;
 		response.redirect('/login');
+	},
+	signUp: function(request, response) {
+		response.render('login/signup');
+	},
+	postSignUp: function(request, response) {
+		var user = request.body;
+		user.id = shortid.generate();
+		if (!request.file)
+			user.avatar = '/image/avatar.png';
+		else user.avatar = '/uploads/' + request.file.filename;
+		user.password = md5(user.password);
+
+		db.get('users').push(user).write();
+		response.cookie('userId', user.id, { signed: true });
+		response.redirect('/user/cart');
 	}
 }
