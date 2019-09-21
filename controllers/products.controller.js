@@ -19,5 +19,13 @@ module.exports = {
       numPagePerPageBar: numPagePerPageBar,
       user: middlewareLogin.postLogin(request)
     });
+  },
+  view: function(request, response) {
+    var id = request.params.id;
+    var product = db.get('products').find({ id: id }).value();
+    response.render('products/view', {
+      active: 'products',
+      product: product
+    })
   }
 }
