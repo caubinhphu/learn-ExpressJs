@@ -22,7 +22,7 @@ html
 				div.d-flex.justify-content-center.justify-content-sm-end
 					if user
 						p.text-light.my-auto= user.email
-						a(href="/user/cart" + user.id, title="Your profile and cart")
+						a(href="/user/cart", title="Your profile and cart")
 							img.rounded-circle.ml-2(src=user.avatar, width="32", height="32")
 					else 
 						a.btn.btn-outline-primary(href="/login") Log in

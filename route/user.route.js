@@ -2,8 +2,9 @@ const express = require('express');
 const multer = require('multer');
 
 const router = express.Router();
-const controller = require('../controllers/users.controller');
+const controller = require('../controllers/user.controller');
 const validate = require('../validate/user.validate');
+const middlewareLogin = require('../middleware/login.middleware');
 
 const upload = multer({ dest: './public/uploads' });
 
@@ -31,12 +32,12 @@ const upload = multer({ dest: './public/uploads' });
 
 router.get('/cart', controller.cart);
 
-router.get('/edit/:id', controller.edit);
+router.get('/edit', middlewareLogin.postLogin1, controller.edit);
 
-router.post('/edit/:id',
+router.post('/edit',
 	upload.single('avatar'),
 	validate.postEdit,
-	controller.edit
+	controller.postEdit
 );
 
 module.exports = router;

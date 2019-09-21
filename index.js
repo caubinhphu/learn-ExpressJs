@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
-const userRoute = require('./route/users.route');
+const userRoute = require('./route/user.route');
 const loginRoute = require('./route/login.route');
 const productRoute = require('./route/products.route');
 // const adminRoute = require('./route/admin.route');
