@@ -1,8 +1,12 @@
+require('dotenv').config();
+
+const md5 = require('md5');
+
 const db = require('../db');
 
 module.exports = {
 	postLogin1: function(request, response, next) {
-		if (!request.signedCookies) {
+		if (!request.signedCookies.userId) {
 			response.redirect('/login');
 			return;
 		}
@@ -25,5 +29,17 @@ module.exports = {
 			return undefined;
 		}
 		return user;
+	},
+
+	postAdmin: function(request, response, next) {
+		if (!request.signedCookies.id) {
+			response.redirect('/login');
+			return;
+		}
+		if (request.signedCookies.id !== process.env.ID) {
+			nresponse.redirect('/login');
+			return;
+		}
+		next();
 	}
 };

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const userRoute = require('./route/user.route');
 const loginRoute = require('./route/login.route');
 const productRoute = require('./route/products.route');
-// const adminRoute = require('./route/admin.route');
+const adminRoute = require('./route/admin.route');
 
 const middlewareLogin = require('./middleware/login.middleware');
 
@@ -33,7 +33,7 @@ app.use('/login', loginRoute);
 // app.use('/users', middlewareLogin.postLogin, userRoute);
 app.use('/user', userRoute);
 app.use('/products', productRoute);
-// app.use('/admin', adminRoute);
+app.use('/admin', middlewareLogin.postAdmin, adminRoute);
 
 app.use(express.static('public'));
 
