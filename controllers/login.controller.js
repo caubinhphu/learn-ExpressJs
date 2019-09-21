@@ -18,7 +18,7 @@ module.exports = {
 		if (email === process.env.ADMIN && passwordEncode === process.env.PASS) {
 			// request.app.locals.id = process.env.ID;
 			response.cookie('id', process.env.ID, { signed: true });
-			response.redirect('/admin');
+			response.redirect('/admin/products');
 			return;
 		}
 		var user = db.get('users').find( { email: email } ).value();

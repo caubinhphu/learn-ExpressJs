@@ -8,25 +8,17 @@ html
 
 	body
 		nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
-			a.navbar-brand(href='/') HTD
+			a.navbar-brand(href='/admin/products') HTD
 			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent')
 				span.navbar-toggler-icon
 			#navbarSupportedContent.collapse.navbar-collapse
 				ul.navbar-nav.mr-auto.text-right
-					li.nav-item(class=active==='home'?'active':'')
-						a.nav-link(href='/') Home
-					li.nav-item(class=active==='users'?'active':'')
-						a.nav-link(href='/users') Users
 					li.nav-item(class=active==='products'?'active':'')
-						a.nav-link(href='/products') Products
+						a.nav-link(href='/admin/products') Products
+					li.nav-item(class=active==='users'?'active':'')
+						a.nav-link(href='/admin/users') Users
 				div.d-flex.justify-content-center.justify-content-sm-end
-					if userLogin
-						p.text-light.my-auto= userLogin.email
-						a(href="/users/" + userLogin.id, title="Your profile")
-							img.rounded-circle.ml-2(src=userLogin.avatar, width="32", height="32")
-					else 
-						a.btn.btn-outline-primary(href="/login") Log in
-
+					p.text-light.my-auto Admin
 					a.btn.btn-outline-secondary.ml-2(href="/login/logout") Log out
 
 

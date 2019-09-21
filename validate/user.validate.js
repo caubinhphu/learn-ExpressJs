@@ -1,6 +1,22 @@
+const db = require('../db');
+
 module.exports = {
 	postCreate: function(request, response, next) {
 		var errors = [];
+		if (!request.body.email) {
+			errors.push('Chưa nhập email');
+		}
+		var users = db.get('users').value();
+		var trungEmail = users.some(user => user.email === request.body.email);
+		if (trungEmail) {
+			errors.push('Email không hợp lệ');
+		}
+		if (!request.body.password) {
+			errors.push('Chưa nhập password');
+		}
+		if (!request.body.repassword || request.body.repassword !== request.body.password) {
+			errors.push('Sai re-password');
+		}
 		if (!request.body.name) {
 			errors.push('Chưa nhập tên');
 		}
@@ -9,7 +25,7 @@ module.exports = {
 		}
 		
 		if (errors.length > 0) {
-			response.render('users/create', {
+			response.render('admin/users/create', {
 				active: 'users',
 				errs: errors,
 				values: request.body

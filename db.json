@@ -9,16 +9,31 @@
       "avatar": "/uploads/d9533bb1ea6133d59fb0f2d72a795a7f"
     },
     {
-      "name": "nguyễn anh hải",
+      "email": "xyz@gmail.com",
+      "password": "827ccb0eea8a706c4c34a16891f84e7b",
+      "repassword": "12345",
+      "name": "caubinhphu5",
+      "age": "21",
+      "id": "6U_cCXXx",
+      "avatar": "/uploads/a8987b263fb8c84c69aabe024567a4f7"
+    },
+    {
+      "email": "abcd@gmail.com",
+      "password": "81dc9bdb52d04dc20036dbd8313ed055",
+      "repassword": "1234",
+      "name": "caubinhphu6",
       "age": "20",
-      "id": "QluDvBF",
+      "id": "a708gsq8",
       "avatar": "/image/avatar.png"
     },
     {
-      "name": "nguyễn anh hải",
-      "age": "12",
-      "id": "PK5gXWr",
-      "avatar": "/uploads/60f5e904a5e880d3d3c8da1e75af50f1"
+      "email": "abcde@gmail.com",
+      "password": "81dc9bdb52d04dc20036dbd8313ed055",
+      "repassword": "1234",
+      "name": "caubinhphu7",
+      "age": "20",
+      "id": "_3goTYKZ",
+      "avatar": "/uploads/262825af6d450b77dfaba6e254d13299"
     }
   ],
   "products": [

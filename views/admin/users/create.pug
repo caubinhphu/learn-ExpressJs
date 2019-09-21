@@ -1,4 +1,4 @@
-extends ../template-layout/common
+extends ../../template-layout/common
 
 block content
 	.mt-4.text-center
@@ -9,7 +9,16 @@ block content
 			each err in errs
 				.alert.alert-danger= err
 
-		form(action="/users/create", method="POST", enctype="multipart/form-data")
+		form(action="/admin/users/create", method="POST", enctype="multipart/form-data")
+			.form-group.row
+				label.col-sm-2(for="email") Email
+				input#email.form-control.col-sm-10(type="email" name="email", value=values ? values.email : "")
+			.form-group.row
+				label.col-sm-2(for="password") Password
+				input#password.form-control.col-sm-10(type="password" name="password")
+			.form-group.row
+				label.col-sm-2(for="re-password") Re-Password
+				input#re-password.form-control.col-sm-10(type="password" name="repassword")
 			.form-group.row
 				label.col-sm-2(for="name") Name
 				input#name.form-control.col-sm-10(type="text" name="name", value=values ? values.name : "")
@@ -19,4 +28,5 @@ block content
 			.form-group.row
 				label.col-sm-2(for="avatar") Avatar
 				input#avatar.form-control-file.col-sm-10(type="file" name="avatar")
-			button.btn.btn-success(type="submit") Add
+			div.text-right
+				button.btn.btn-primary(type="submit") Add
