@@ -1,5 +1,9 @@
+const fs = require('fs');
+
 const db = require('../db');
 const middlewareLogin = require('../middleware/login.middleware');
+
+const avatarDefault = '/image/avatar.png';
 
 module.exports = {
 	cart: function(request, response) {
@@ -19,6 +23,8 @@ module.exports = {
 		// var id = request.params.id;
 		var id = middlewareLogin.postLogin(request).id;
 		var user = db.get('users').find( { id: id }).value();
+		if (user.avatar !== avatarDefault)
+			fs.unlink(`./public${user.avatar}`, (err) => { if (err) throw err} );
 		user.name = request.body.name;
 		user.age = request.body.age;
 		if (request.file)
