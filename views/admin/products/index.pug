@@ -1,8 +1,9 @@
-extends ../template-layout/common.user.pug
+extends ../../template-layout/common
 
 block content
 	.container.my-4
 		h1.text-center Products
+		a.btn.btn-primary(href="/admin/products/create") Add new product
 		.mt-4.row
 			each product in products
 				.col-md-4.mt-2
@@ -11,7 +12,7 @@ block content
 						.card-body
 							h5.card-title= product.name
 							p.card-text= product.description
-							a.btn.btn-primary(href="/products/" + product.id) View
+							a.btn.btn-primary(href='#') View
 		nav.mt-4
 			ul.pagination.justify-content-center
 				- var arr = [];

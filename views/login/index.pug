@@ -1,4 +1,4 @@
-extends ../template-layout/common
+extends ../template-layout/common.user.pug
 
 block content
 	.mt-4.text-center
@@ -17,3 +17,6 @@ block content
 				label.col-sm-2(for="password") Password
 				input#password.form-control.col-sm-10(type="password" name="password", value= value ? value.password : "")
 			button.btn.btn-primary(type="submit") Login
+		.text-center
+			p Đăng kí tài khoản mới 
+				a(href="/login/signup") Sign up

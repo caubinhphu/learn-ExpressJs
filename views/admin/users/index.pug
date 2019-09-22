@@ -1,15 +1,15 @@
-extends ../template-layout/common
+extends ../../template-layout/common
 
 block content
 	.container.my-4
 		h2.text-center Users list
 		
 		.d-flex.justify-content-between.my-4
-			a.btn.btn-primary.align-self-center(href="/users/create") Add
+			a.btn.btn-primary.align-self-center(href="/admin/users/create") Add
 
-			form.m-0(action="/users/search", method="GET")
+			form.m-0(action="/admin/users/search", method="GET")
 				.input-group
-					input.form-control(type="text" name="q" value=`${query}` === 'undefined' ? '': `${query}`)
+					input.form-control(type="text" name="q" value=query ? `${query}` : '')
 					.input-group-append
 						button.btn.btn-success Search
 		
@@ -26,4 +26,4 @@ block content
 					td= user.name
 					td= user.age + ' '
 					td
-						a.btn.btn-light(href='/users/' + user.id) View
+						a.btn.btn-light(href='/admin/users/' + user.id) View

@@ -1,0 +1,14 @@
+extends ../template-layout/common.user.pug
+
+block content
+	.container.my-4
+		.row
+			.col-sm-6
+				img(src=product.image, alt=product.name, title=product.name, width="100%")
+			.col-sm-6.d-flex.flex-column.justify-content-center
+				p Tên sản phẩm: 
+					b= product.name
+				p Mô tả: 
+					i= product.description
+		p Hình ảnh liên quan
+		.row

@@ -1,4 +1,5 @@
 const db = require('../db');
+const middlewareLogin = require('../middleware/login.middleware');
 
 const productPerPage = 9;
 const numPagePerPageBar = 5;
@@ -8,13 +9,23 @@ module.exports = {
     var page = parseInt(request.query.page) || 1;
     var startProduct = productPerPage * page - productPerPage;
     var endProduct = productPerPage * page;
+
     response.render('products/index', {
       products: db.get('products').slice(startProduct, endProduct).value(),
       active: 'products',
       pageCurrent: page,
       numProduct: db.get('products').value().length,
       productPerPage: productPerPage,
-      numPagePerPageBar: numPagePerPageBar
+      numPagePerPageBar: numPagePerPageBar,
+      user: middlewareLogin.postLogin(request)
     });
+  },
+  view: function(request, response) {
+    var id = request.params.id;
+    var product = db.get('products').find({ id: id }).value();
+    response.render('products/view', {
+      active: 'products',
+      product: product
+    })
   }
 }

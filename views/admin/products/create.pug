@@ -1,0 +1,22 @@
+extends ../../template-layout/common
+
+block content
+	.container.my-4
+		h1.text-center Create new product
+
+		if errs
+			each err in errs
+				.alert.alert-danger= err
+
+		form(action="/admin/products/create", method="POST", enctype="multipart/form-data")
+			.form-group.row
+				label.col-sm-3(for="name") Name
+				input#name.form-control.col-sm-9(type="text" name="name", value=values ? values.name : "")
+			.form-group.row
+				label.col-sm-3(for="description") Description
+				input#description.form-control.col-sm-9(type="text" name="description")
+			.form-group.row
+				label.col-sm-3(for="images") Image
+				input#images.form-control-file.col-sm-9(type="file" name="images", multiple=true)
+			div.text-right
+				button.btn.btn-primary(type="submit") Add
