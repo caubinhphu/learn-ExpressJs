@@ -25,7 +25,8 @@ module.exports = {
     var product = db.get('products').find({ id: id }).value();
     response.render('products/view', {
       active: 'products',
-      product: product
+      product: product,
+      user: middlewareLogin.postLogin(request)
     })
   }
 }

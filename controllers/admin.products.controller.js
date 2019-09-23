@@ -18,7 +18,15 @@ module.exports = {
 		var product = request.body;
 		product.id = shortid.generate();
 		product.images = request.files.map(image => `/uploads/${image.filename}`);
-		db.get('products').push(product).write();
+		db.get('products').unshift(product).write();
 		response.redirect('/admin/products');
+	},
+	get: function(request, response) {
+		var id = request.params.id;
+		var product = db.get('products').find( { id: id } ).value();
+		response.render('admin/products/view', {
+			active: 'products',
+			product: product
+		})
 	}
 }

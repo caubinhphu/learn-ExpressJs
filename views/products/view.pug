@@ -2,9 +2,9 @@ extends ../template-layout/common.user.pug
 
 block content
 	.container.my-4
-		.row
+		.row.my-2
 			.col-sm-6
-				img(src=product.image, alt=product.name, title=product.name, width="100%")
+				img(src=product.images[0], alt=product.name, title=product.name, width="100%")
 			.col-sm-6.d-flex.flex-column.justify-content-center
 				p Tên sản phẩm: 
 					b= product.name
@@ -12,3 +12,6 @@ block content
 					i= product.description
 		p Hình ảnh liên quan
 		.row
+			each image in product.images
+				.col-sm-3.my-2
+					img(src=image, alt=product.name, title=product.name, width="100%")

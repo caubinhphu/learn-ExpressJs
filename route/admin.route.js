@@ -38,4 +38,6 @@ router.post('/users/create',
 
 router.get('/users/:id', usersController.get);
 
+router.get('/products/:id', productsController.get);
+
 module.exports = router;
