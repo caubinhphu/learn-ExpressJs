@@ -3,7 +3,14 @@ extends ../../template-layout/common
 block content
 	.container.my-4
 		h1.text-center Products
-		a.btn.btn-primary(href="/admin/products/create") Add new product
+		.d-flex.justify-content-between
+			a.btn.btn-primary(href="/admin/products/create") Add new product
+			form.m-0(action="/admin/products/search", method="GET")
+				.input-group
+					input.form-control(type="text" name="q" value=query ? `${query}` : '')
+					.input-group-append
+						button.btn.btn-success Search
+
 		.mt-4.row
 			each product in products
 				.col-md-4.mt-2

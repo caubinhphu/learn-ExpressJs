@@ -28,5 +28,16 @@ module.exports = {
 			active: 'products',
 			product: product
 		})
+	},
+	search: function(request, response) {
+		var query = request.query.q;
+		var matchProducts = db.get('products')
+							  .value()
+							  .filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
+		response.render('admin/products/index', {
+			products: matchProducts,
+			active: 'products',
+			query: query
+		})
 	}
 }

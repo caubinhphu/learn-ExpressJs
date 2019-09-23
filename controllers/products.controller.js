@@ -28,5 +28,18 @@ module.exports = {
       product: product,
       user: middlewareLogin.postLogin(request)
     })
+  },
+  search: function(request, response) {
+    var query = request.query.q;
+    var matchProducts = db.get('products')
+                          .value()
+                          .filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
+    
+    response.render('products/index', {
+      products: matchProducts,
+      active: 'products',
+      pageCurrent: undefined,
+      query: query
+    });
   }
 }

@@ -3,6 +3,11 @@ extends ../template-layout/common.user.pug
 block content
 	.container.my-4
 		h1.text-center Products
+
+		form.input-group(action="/products/search", method="GET")
+			input.form-control(type="text", name="q", value=query?query:'')
+			.input-group-append
+				button.btn.btn-success(type="submit") Search
 		.mt-4.row
 			each product in products
 				.col-md-4.mt-2
@@ -12,23 +17,24 @@ block content
 							h5.card-title= product.name
 							p.card-text= product.description
 							a.btn.btn-primary(href="/products/" + product.id) View
-		nav.mt-4
-			ul.pagination.justify-content-center
-				- var arr = [];
-				- for (let i = 1; i <= numPagePerPageBar; i++)
-					- arr.push(i);
+		if pageCurrent
+			nav.mt-4
+				ul.pagination.justify-content-center
+					- var arr = [];
+					- for (let i = 1; i <= numPagePerPageBar; i++)
+						- arr.push(i);
 
-				- var x = Math.ceil(pageCurrent / numPagePerPageBar);
+					- var x = Math.ceil(pageCurrent / numPagePerPageBar);
 
-				- var arrPage = arr.map((num) => num + (x - 1) * numPagePerPageBar);
-				- arrPage = arrPage.filter(page => page * productPerPage < numProduct + productPerPage)
+					- var arrPage = arr.map((num) => num + (x - 1) * numPagePerPageBar);
+					- arrPage = arrPage.filter(page => page * productPerPage < numProduct + productPerPage)
 
-				li.page-item(class=pageCurrent===1?'disabled':'')
-					a.page-link(href='/products?page=' + (pageCurrent - 1)) Prev
+					li.page-item(class=pageCurrent===1?'disabled':'')
+						a.page-link(href='/products?page=' + (pageCurrent - 1)) Prev
 
-				each page in arrPage
-					li.page-item(class=page===pageCurrent?'active':'')
-						a.page-link(href='/products?page=' + page)= page
+					each page in arrPage
+						li.page-item(class=page===pageCurrent?'active':'')
+							a.page-link(href='/products?page=' + page)= page
 
-				li.page-item(class=(pageCurrent + 1) * productPerPage >= numProduct + productPerPage ? 'disabled' : '')
-					a.page-link(href='/products?page=' + (pageCurrent + 1)) Next
+					li.page-item(class=(pageCurrent + 1) * productPerPage >= numProduct + productPerPage ? 'disabled' : '')
+						a.page-link(href='/products?page=' + (pageCurrent + 1)) Next

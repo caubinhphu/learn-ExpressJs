@@ -24,6 +24,8 @@ router.post('/products/create',
 	productsController.postProduct
 );
 
+router.get('/products/search', productsController.search);
+
 router.get('/users', usersController.index);
 
 router.get('/users/search', usersController.search);
